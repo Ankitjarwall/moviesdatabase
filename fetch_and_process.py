@@ -1,6 +1,7 @@
 import csv
 import requests
 from urllib.parse import urljoin
+import sys
 
 # Define the paths to the CSV files
 csv_file_path = "movies_id.csv"
@@ -8,6 +9,9 @@ failed_csv_path = "failed_id.csv"
 
 
 def fetch_and_process(start_row, end_row):
+    # Increase CSV field size limit
+    csv.field_size_limit(10**7)
+
     # Function to update the movies_id.csv file
     def update_csv_file(csv_file_path, video_id, status):
         lines = []
