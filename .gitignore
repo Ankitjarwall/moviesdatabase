@@ -1,0 +1,9 @@
+# Ignore all files
+# *
+
+# But not these files
+# !.gitignore
+# !index.py
+# !github_update.py
+# !movies_id.csv
+# !failed_id.csv
