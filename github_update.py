@@ -1,9 +1,18 @@
-echo "# moviesdatabase" >> README.md    # Create a README file
-git init                                # Initialize a Git repository
-git add README.md                       # Stage the README file for commit
-git commit - m "first commit"            # Commit the changes
-git branch - M main                      # Rename the default branch to 'main'
-# Add the remote repository
-git remote add origin git@github.com: Ankitjarwall/moviesdatabase.git
-# Push the changes to the remote repository
-git push - u origin main
+import subprocess
+import time
+
+
+def git_auto_push():
+    try:
+        subprocess.run(['git', 'add', '.'])
+        subprocess.run(['git', 'commit', '-m', 'Automated commit'])
+        subprocess.run(['git', 'push'])
+        print("Code pushed to the repository.")
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred: {e}")
+
+
+if __name__ == "__main__":
+    while True:
+        git_auto_push()
+        time.sleep(60)  # Wait for 60 seconds before the next push
