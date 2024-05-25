@@ -36,6 +36,7 @@ def append_to_failed_csv(failed_csv_path, video_id):
 # Open and read the CSV file
 with open(csv_file_path, newline='') as csvfile:
     csvreader = csv.reader(csvfile)
+    row_count = 0
     for row in csvreader:
         video_id = row[0]
 
@@ -119,3 +120,8 @@ with open(csv_file_path, newline='') as csvfile:
                 f"Failed to fetch data for video ID {video_id}. Status code: {response.status_code}")
             update_csv_file(csv_file_path, video_id, "fail")
             append_to_failed_csv(failed_csv_path, video_id)
+
+        # Increment the row count and break if the limit is reached
+        row_count += 1
+        if row_count >= 100000:
+            break
